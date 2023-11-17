@@ -1,8 +1,9 @@
-const jwt = require('jsonwebtoken');
+import { NextFunction } from 'express';
+import jwt from 'jsonwebtoken'
 const { Response } = require('express');
-const SECRET = 'SECr3t';  // This should be in an environment variable in a real application
+export const SECRET = 'SECr3t';  // This should be in an environment variable in a real application
 
-const authenticateJwt = (req, res, next) => {
+export const authenticateJwt = (req: Request, res: Response, next: NextFunction) => {
   const authHeader = req.headers.authorization;
   if (authHeader) {
     const token = authHeader.split(' ')[1];
@@ -18,7 +19,3 @@ const authenticateJwt = (req, res, next) => {
   }
 };
 
-module.exports = {
-    authenticateJwt,
-    SECRET
-}
