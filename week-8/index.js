@@ -1,5 +1,13 @@
-function getFirstNumber(arr) {
-    return arr[0];
+"use strict";
+// function getFirstNumber<T>(arr: T[]):T {
+//     return arr[0]
+// }
+// const ans = getFirstNumber([1, 2, 3])
+// const ans2 = getFirstNumber(['one', 'two', 'three'])
+// console.log(ans)
+// console.log(ans2)
+function swap(a, b) {
+    return [b, a];
 }
-var ans = getFirstNumber([1, 2, 3]);
+const ans = swap(2, 3);
 console.log(ans);
