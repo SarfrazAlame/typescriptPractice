@@ -17,3 +17,7 @@ const TodoSchema = new mongoose.Schema({
     done: Boolean,
     userId: String
 })
+
+
+export const User = mongoose.model("user",userSchema)
+export const Todo = mongoose.model("Todo",TodoSchema)
