@@ -1,6 +1,7 @@
 import express from 'express'
 import { User } from '../db/model'
 import jwt from 'jsonwebtoken'
+import { authenticateJwt } from '../middelware/auth'
 export const SECRET = "uecw234"
 
 const router = express.Router()
@@ -30,11 +31,15 @@ router.post("/login", async (req, res) => {
     }
 })
 
-router.get("/me", async(req,res)=>{
-    const user = await User.find({})
-
+router.get("/me", authenticateJwt, async(req,res)=>{
+    const userId = req.headers['userId']
+    const user = await User.findById({_id:userId})
+    if(user){
+        res.status(200).json({username:user.username})
+    }else{
+        res.status(311).json({message:"User not logged in"})
+    }
 })
-
 
 
 export default router
