@@ -14,7 +14,7 @@ router.post("/signup", async (req, res) => {
             message: "User Already axist"
         })
     }
-    const newUser = new User(username, password)
+    const newUser = new User({username, password})
     await newUser.save()
     const token = jwt.sign({ id: newUser._id }, SECRET, { expiresIn: '4h' })
     return res.status(200).json({ message: "successfully registered", token })

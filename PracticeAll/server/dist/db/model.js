@@ -6,14 +6,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Todo = exports.User = void 0;
 const mongoose_1 = __importDefault(require("mongoose"));
 const userSchema = new mongoose_1.default.Schema({
-    username: {
-        type: String,
-        required: true
-    },
-    password: {
-        type: String,
-        required: true
-    }
+    username: String,
+    password: String
 });
 const TodoSchema = new mongoose_1.default.Schema({
     title: String,

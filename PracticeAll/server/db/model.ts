@@ -1,14 +1,8 @@
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
-    username: {
-        type: String,
-        required: true
-    },
-    password: {
-        type: String,
-        required: true
-    }
+    username: String,
+    password: String
 })
 
 const TodoSchema = new mongoose.Schema({
@@ -19,5 +13,5 @@ const TodoSchema = new mongoose.Schema({
 })
 
 
-export const User = mongoose.model("user",userSchema)
-export const Todo = mongoose.model("Todo",TodoSchema)
+export const User = mongoose.model("user", userSchema)
+export const Todo = mongoose.model("Todo", TodoSchema)
