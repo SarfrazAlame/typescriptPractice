@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const Todos = () => {
     const [todos, setTodos] = useState([])
@@ -14,7 +14,7 @@ const Todos = () => {
     }, [])
     return (
         <div>
-            {todos.map(x=>(
+            {todos.map(x => (
                 <h1>{x.title}</h1>
             ))}
         </div>
