@@ -1,9 +1,11 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 const AddCourse = () => {
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
 
+  const nevigate = useNavigate()
   const handleTodo = async () => {
     const res = await fetch("http://localhost:4000/api/todo", {
       method: "POST",
@@ -11,9 +13,9 @@ const AddCourse = () => {
       body: JSON.stringify({ title, description })
     })
     const todo = await res.json()
-  }
 
-  
+    nevigate("/todo")
+  }
 
   return (
     <>
@@ -22,10 +24,9 @@ const AddCourse = () => {
         <input onChange={e => setDescription(e.target.value)} type="text" value={description} placeholder="description" /><br /><br />
         <button onClick={handleTodo}>Add Todo</button>
       </div>
+     
     </>
   )
 }
-
-
 
 export default AddCourse

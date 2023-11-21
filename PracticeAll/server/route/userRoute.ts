@@ -14,7 +14,7 @@ router.post("/signup", async (req, res) => {
             message: "User Already axist"
         })
     }
-    const newUser = new User({username, password})
+    const newUser = new User({ username, password })
     await newUser.save()
     const token = jwt.sign({ id: newUser._id }, SECRET, { expiresIn: '4h' })
     return res.status(200).json({ message: "successfully registered", token })
@@ -31,13 +31,13 @@ router.post("/login", async (req, res) => {
     }
 })
 
-router.get("/me", authenticateJwt, async(req,res)=>{
+router.get("/me", authenticateJwt, async (req, res) => {
     const userId = req.headers['userId']
-    const user = await User.findById({_id:userId})
-    if(user){
-        res.status(200).json({username:user.username})
-    }else{
-        res.status(311).json({message:"User not logged in"})
+    const user = await User.findById(userId)
+    if (user) {
+        res.status(200).json({ username: user.username })
+    } else {
+        res.status(311).json({ message: "User not logged in" })
     }
 })
 

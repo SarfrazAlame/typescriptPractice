@@ -45,7 +45,7 @@ router.post("/login", (req, res) => __awaiter(void 0, void 0, void 0, function* 
 }));
 router.get("/me", auth_1.authenticateJwt, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const userId = req.headers['userId'];
-    const user = yield model_1.User.findById({ _id: userId });
+    const user = yield model_1.User.findById(userId);
     if (user) {
         res.status(200).json({ username: user.username });
     }

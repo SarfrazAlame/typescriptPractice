@@ -31,5 +31,12 @@ router.post("/todo", auth_1.authenticateJwt, (req, res) => __awaiter(void 0, voi
 }));
 router.get("/todo", auth_1.authenticateJwt, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const userId = req.headers['userId'];
+    const todos = model_1.Todo.findById({ userId });
+    if (todos) {
+        res.json({ todo: todos });
+    }
+    else {
+        res.json({ message: "todo not found" });
+    }
 }));
 exports.default = router;
