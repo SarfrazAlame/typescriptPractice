@@ -9,7 +9,7 @@ const TodoSchema = new mongoose.Schema({
     title: String,
     description: String,
     done: Boolean,
-    userId: String
+    userId: mongoose.Schema.Types.ObjectId
 })
 
 
