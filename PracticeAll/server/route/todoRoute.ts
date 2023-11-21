@@ -16,13 +16,13 @@ router.post("/todo", authenticateJwt, async (req, res) => {
     }
 })
 
-router.get("/todo", authenticateJwt, async (req, res) => {
+router.get("/todo", authenticateJwt, (req, res) => {
     const userId = req.headers['userId']
-    const todos = Todo.findById({userId})
-    if(todos){
-        res.json({todo:todos})
-    }else{
-        res.json({message:"todo not found"})
-    }
+    Todo.findById(userId).then((todos) => {
+        console.log(todos)
+        res.json({ todo: todos })
+    }).catch(e => {
+        console.log(e)
+    })
 })
 export default router

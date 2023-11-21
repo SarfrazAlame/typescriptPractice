@@ -29,14 +29,13 @@ router.post("/todo", auth_1.authenticateJwt, (req, res) => __awaiter(void 0, voi
         res.status(404).json({ message: "error while adding " });
     }
 }));
-router.get("/todo", auth_1.authenticateJwt, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.get("/todo", auth_1.authenticateJwt, (req, res) => {
     const userId = req.headers['userId'];
-    const todos = model_1.Todo.findById({ userId });
-    if (todos) {
+    model_1.Todo.findById(userId).then((todos) => {
+        console.log(todos);
         res.json({ todo: todos });
-    }
-    else {
-        res.json({ message: "todo not found" });
-    }
-}));
+    }).catch(e => {
+        console.log(e);
+    });
+});
 exports.default = router;
