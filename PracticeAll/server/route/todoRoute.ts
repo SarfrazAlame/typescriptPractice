@@ -18,7 +18,7 @@ router.post("/todo", authenticateJwt, async (req, res) => {
 
 router.get("/todo", authenticateJwt, (req, res) => {
     const userId = req.headers['userId']
-    Todo.findById(userId).then((todos) => {
+    Todo.findById({userId}).then((todos) => {
         console.log(todos)
         res.json({ todo: todos })
     }).catch(e => {

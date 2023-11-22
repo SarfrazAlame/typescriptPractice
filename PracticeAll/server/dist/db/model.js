@@ -13,7 +13,7 @@ const TodoSchema = new mongoose_1.default.Schema({
     title: String,
     description: String,
     done: Boolean,
-    userId: String
+    userId: mongoose_1.default.Schema.Types.ObjectId
 });
 exports.User = mongoose_1.default.model("user", userSchema);
 exports.Todo = mongoose_1.default.model("Todo", TodoSchema);

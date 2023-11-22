@@ -31,7 +31,7 @@ router.post("/todo", auth_1.authenticateJwt, (req, res) => __awaiter(void 0, voi
 }));
 router.get("/todo", auth_1.authenticateJwt, (req, res) => {
     const userId = req.headers['userId'];
-    model_1.Todo.findById(userId).then((todos) => {
+    model_1.Todo.findById({ userId }).then((todos) => {
         console.log(todos);
         res.json({ todo: todos });
     }).catch(e => {
